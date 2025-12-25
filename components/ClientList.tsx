@@ -4,9 +4,11 @@ import { Client, OnboardingStatus } from '../types';
 
 interface ClientListProps {
   clients: Client[];
+  onEdit: (client: Client) => void;
+  onView: (client: Client) => void;
 }
 
-const ClientList: React.FC<ClientListProps> = ({ clients }) => {
+const ClientList: React.FC<ClientListProps> = ({ clients, onEdit, onView }) => {
   const getStatusColor = (status: OnboardingStatus) => {
     switch (status) {
       case OnboardingStatus.COMPLETED: return 'bg-green-100 text-green-700';
@@ -76,8 +78,18 @@ const ClientList: React.FC<ClientListProps> = ({ clients }) => {
                 </td>
                 <td className="px-6 py-4 text-center">
                   <div className="flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button className="p-1 text-blue-600 hover:bg-blue-50 rounded">Edit</button>
-                    <button className="p-1 text-slate-400 hover:bg-slate-100 rounded">View</button>
+                    <button 
+                      onClick={() => onEdit(client)}
+                      className="p-1 px-2 text-blue-600 hover:bg-blue-50 rounded text-xs font-bold"
+                    >
+                      Edit
+                    </button>
+                    <button 
+                      onClick={() => onView(client)}
+                      className="p-1 px-2 text-slate-400 hover:bg-slate-100 rounded text-xs font-bold"
+                    >
+                      View
+                    </button>
                   </div>
                 </td>
               </tr>

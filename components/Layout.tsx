@@ -5,9 +5,10 @@ interface LayoutProps {
   children: React.ReactNode;
   activeView: string;
   setActiveView: (view: string) => void;
+  onNewClientClick: () => void;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, activeView, setActiveView }) => {
+const Layout: React.FC<LayoutProps> = ({ children, activeView, setActiveView, onNewClientClick }) => {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: '📊' },
     { id: 'clients', label: 'Clients', icon: '👥' },
@@ -65,7 +66,10 @@ const Layout: React.FC<LayoutProps> = ({ children, activeView, setActiveView }) 
               <span className="text-xl">🔔</span>
             </button>
             <div className="h-8 w-px bg-slate-200 mx-2"></div>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+            <button 
+              onClick={onNewClientClick}
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+            >
               + New Client
             </button>
           </div>
