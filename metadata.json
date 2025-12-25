@@ -1,0 +1,7 @@
+{
+  "name": "AI - Customer Success Platform",
+  "description": "An AI-powered Customer Success platform for managing client onboarding, resume optimization, and recruitment workflow tracking.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
